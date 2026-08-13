@@ -12,7 +12,7 @@
       "name": "model",
       "images": "$inputs.image",
       "class_names": [
-        "cardboard box"
+        "brown paper bag"
       ],
       "confidence": 0.2,
       "version": "l"
