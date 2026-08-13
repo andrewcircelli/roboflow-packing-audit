@@ -2,10 +2,12 @@
 .env
 __pycache__/
 *.pyc
-data/*.mp4
+.DS_Store
 out/
 
-# Test frames excluded until replaced with own footage (stock image licensing).
-data/*.jpg
-data/*.jpeg
-data/*.png
+# Capture data is never committed. Deny everything under data/ and allow back
+# only the placeholder -- an extension allowlist is the wrong shape here, since
+# one missed case (.JPG vs .jpg) publishes footage of a real shipping label with
+# a home address on it. Deny-by-default is the only safe rule.
+data/*
+!data/.gitkeep

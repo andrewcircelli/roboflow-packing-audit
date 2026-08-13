@@ -2,19 +2,19 @@
   {
     "model_output": {
       "image": {
-        "width": 511,
-        "height": 340
+        "width": 2160,
+        "height": 3840
       },
       "predictions": [
         {
-          "width": 304.3817138671875,
-          "height": 154.40895080566406,
-          "x": 188.55313110351562,
-          "y": 244.12899780273438,
-          "confidence": 0.5798658728599548,
+          "width": 2096.037841796875,
+          "height": 3249.051513671875,
+          "x": 1048.0189208984375,
+          "y": 2094.64599609375,
+          "confidence": 0.692703902721405,
           "class_id": 0,
-          "class": "cardboard box",
-          "detection_id": "69d980a6-73b1-4bd2-bb6e-ddf6cca2be5e",
+          "class": "brown paper bag",
+          "detection_id": "a674f5d1-01d3-435f-82ec-24683adce826",
           "parent_id": "image"
         }
       ]
