@@ -28,6 +28,20 @@ be forced by optics. See [Calibration](#calibration): a single camera cannot
 simultaneously frame a whole parcel and resolve the barcode on it. Real
 facilities mount a separate scanner for exactly this reason.
 
+The other half of the argument surfaced by accident. This pipeline initially
+**passed a parcel it should have diverted** — the mailer carries its own Code 128
+beside the shipping label, so a rule that accepted any decoded barcode waved
+through the one case staged deliberately to fail.
+
+That failure had a familiar shape. Before this project I spent a stretch on
+application engineering for industrial barcode decoding, including validating
+decoded labels against captured images where several labels were in frame and
+only one carried the serial number that mattered. Deciding *which code in a frame
+is the object's identity* is the same problem in both places — and it is not a
+computer vision problem. It is a problem of trusting a signal that reports
+presence when what you needed was identity, and it is the reason the two sensors
+have to stay independent of each other.
+
 ---
 
 ## Quick start
