@@ -1,0 +1,23 @@
+[
+  {
+    "model_output": {
+      "image": {
+        "width": 511,
+        "height": 340
+      },
+      "predictions": [
+        {
+          "width": 304.3817138671875,
+          "height": 154.40895080566406,
+          "x": 188.55313110351562,
+          "y": 244.12899780273438,
+          "confidence": 0.5798658728599548,
+          "class_id": 0,
+          "class": "cardboard box",
+          "detection_id": "69d980a6-73b1-4bd2-bb6e-ddf6cca2be5e",
+          "parent_id": "image"
+        }
+      ]
+    }
+  }
+]

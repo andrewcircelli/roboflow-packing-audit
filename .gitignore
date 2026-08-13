@@ -1,0 +1,11 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+data/*.mp4
+out/
+
+# Test frames excluded until replaced with own footage (stock image licensing).
+data/*.jpg
+data/*.jpeg
+data/*.png
