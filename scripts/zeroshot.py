@@ -5,8 +5,8 @@ Universe model id, no training, no labelling.
 
 Reports cold vs. warm latency separately, because the first call pays for the
 weight download and quoting that number as "inference latency" is wrong by ~40x.
-Writes an annotated frame, because scores alone cannot tell you the model is
-looking at the wrong part of the image.
+Writes an annotated frame, because scores alone cannot reveal that a model is
+confidently looking at the wrong part of the image.
 
 Usage:
     ./.venv/bin/python scripts/zeroshot.py <image> "<prompt>" ["<prompt>" ...]

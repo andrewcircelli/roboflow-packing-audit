@@ -1,0 +1,112 @@
+==============================================================
+OFFLINE VERIFICATION
+date          Thu Aug 13 15:45:37 EDT 2026
+host          Darwin 25.5.0 arm64
+container     naughty_lamport
+==============================================================
+
+--- 1. network state -----------------------------------------
+Wi-Fi Power (en0): Off
+default route:
+  no default route
+
+--- 2. prove the internet is unreachable ----------------------
+000  api.roboflow.com unreachable (expected)
+  1.1.1.1 unreachable (expected)
+
+--- 3. on-disk cache before restart ---------------------------
+821M	/private/tmp/model-cache
+l
+m
+s
+v2-s
+workflow definition cached:
+/private/tmp/model-cache/workflow/andrew-c-fcfp2/.tenanted-v2/custom-workflow_9e5f80d07b19dae7ae5ae89edfa83486954b4aee5026c3daaa3ca64a011a12ef.json
+
+--- 4. restart the container (clears anything held in memory) --
+naughty_lamport
+  waiting for :9001 ....... up
+{"name":"Roboflow Inference Server","version":"1.4.0","uuid":"5PcOFo"}
+
+--- 5. run the pipeline, fully offline ------------------------
+source     data/bag.MOV  2160x3840 @ 30.0 fps, 522 frames
+sampling   every 10 frames -> ~52 inferences
+output     out/audit-offline.mp4  1080x1920
+
+  f0     IDLE         parcel=0.000 raw=0 zone=False code=-                 8225ms inf   203ms dec
+  f10    IDLE         parcel=0.000 raw=0 zone=False code=-                  587ms inf   193ms dec
+  f20    IDLE         parcel=0.000 raw=0 zone=False code=-                  467ms inf   192ms dec
+  f30    IDLE         parcel=0.000 raw=0 zone=False code=-                  514ms inf   200ms dec
+  f40    IDLE         parcel=0.000 raw=0 zone=False code=-                  982ms inf   236ms dec
+  f50    IDLE         parcel=0.000 raw=0 zone=False code=-                  708ms inf   205ms dec
+  f60    IDLE         parcel=0.000 raw=0 zone=False code=-                  501ms inf   206ms dec
+  f70    IDLE         parcel=0.000 raw=0 zone=False code=-                  572ms inf   193ms dec
+  f80    IDLE         parcel=0.000 raw=0 zone=False code=-                  487ms inf   192ms dec
+  f90    APPROACHING  parcel=0.688 raw=1 zone=False code=-                  455ms inf   186ms dec
+  f100   APPROACHING  parcel=0.768 raw=1 zone=False code=-                  462ms inf   175ms dec
+  f110   APPROACHING  parcel=0.888 raw=1 zone=False code=-                  461ms inf   164ms dec
+  f120   DIVERT       parcel=0.920 raw=1 zone=True  code=-                  442ms inf   183ms dec
+  f130   DIVERT       parcel=0.811 raw=1 zone=True  code=-                  465ms inf   172ms dec
+  f140   DIVERT       parcel=0.733 raw=1 zone=True  code=-                  480ms inf   162ms dec
+  f150   PASS         parcel=0.770 raw=1 zone=True  code=TBA333622790661    539ms inf   188ms dec
+  f160   PASS         parcel=0.645 raw=1 zone=True  code=TBA333622790661    476ms inf   186ms dec
+  f170   PASS         parcel=0.720 raw=1 zone=True  code=TBA333622790661    502ms inf   189ms dec
+  f180   PASS         parcel=0.640 raw=1 zone=True  code=TBA333622790661    467ms inf   186ms dec
+  f190   PASS         parcel=0.718 raw=1 zone=True  code=TBA333622790661    483ms inf   172ms dec
+  f200   DIVERT       parcel=0.491 raw=1 zone=True  code=-                  502ms inf   182ms dec
+  f210   PASS         parcel=0.488 raw=1 zone=True  code=TBA333622790661    469ms inf   180ms dec
+  f220   PASS         parcel=0.812 raw=1 zone=True  code=TBA333622790661    462ms inf   190ms dec
+  f230   PASS         parcel=0.847 raw=1 zone=True  code=TBA333622790661    476ms inf   188ms dec
+  f240   PASS         parcel=0.792 raw=1 zone=True  code=TBA333622790661    485ms inf   192ms dec
+  f250   DIVERT       parcel=0.896 raw=1 zone=True  code=-                  478ms inf   170ms dec
+  f260   APPROACHING  parcel=0.936 raw=1 zone=False code=-                  461ms inf   144ms dec
+  f270   APPROACHING  parcel=0.447 raw=1 zone=False code=-                  456ms inf   169ms dec
+  f280   APPROACHING  parcel=0.291 raw=1 zone=False code=-                  420ms inf   170ms dec
+  f290   IDLE         parcel=0.000 raw=0 zone=False code=-                  438ms inf   177ms dec
+  f300   IDLE         parcel=0.000 raw=0 zone=False code=-                  459ms inf   200ms dec
+  f310   IDLE         parcel=0.000 raw=0 zone=False code=-                  453ms inf   198ms dec
+  f320   IDLE         parcel=0.000 raw=0 zone=False code=-                  430ms inf   194ms dec
+  f330   IDLE         parcel=0.000 raw=0 zone=False code=-                  446ms inf   195ms dec
+  f340   IDLE         parcel=0.000 raw=0 zone=False code=-                  432ms inf   189ms dec
+  f350   IDLE         parcel=0.000 raw=0 zone=False code=-                  449ms inf   194ms dec
+  f360   IDLE         parcel=0.000 raw=0 zone=False code=-                  429ms inf   200ms dec
+  f370   IDLE         parcel=0.000 raw=0 zone=False code=-                  443ms inf   193ms dec
+  f380   IDLE         parcel=0.000 raw=0 zone=False code=-                  428ms inf   190ms dec
+  f390   IDLE         parcel=0.000 raw=0 zone=False code=-                  463ms inf   192ms dec
+  f400   IDLE         parcel=0.000 raw=0 zone=False code=-                  439ms inf   171ms dec
+  f410   DIVERT       parcel=0.334 raw=1 zone=True  code=-                  433ms inf   162ms dec
+  f420   IDLE         parcel=0.000 raw=0 zone=False code=-                  432ms inf   171ms dec
+  f430   IDLE         parcel=0.000 raw=0 zone=False code=-                  454ms inf   180ms dec
+  f440   IDLE         parcel=0.000 raw=0 zone=False code=-                  463ms inf   202ms dec
+  f450   IDLE         parcel=0.000 raw=0 zone=False code=-                  458ms inf   204ms dec
+  f460   IDLE         parcel=0.000 raw=0 zone=False code=-                  475ms inf   206ms dec
+  f470   IDLE         parcel=0.000 raw=0 zone=False code=-                  457ms inf   202ms dec
+  f480   IDLE         parcel=0.000 raw=0 zone=False code=-                  456ms inf   191ms dec
+  f490   IDLE         parcel=0.000 raw=0 zone=False code=-                  468ms inf   195ms dec
+  f500   IDLE         parcel=0.000 raw=0 zone=False code=-                  439ms inf   150ms dec
+  f510   IDLE         parcel=0.000 raw=0 zone=False code=-                  486ms inf   189ms dec
+  f520   IDLE         parcel=0.000 raw=0 zone=False code=-                  485ms inf   171ms dec
+
+frames read 522, processed 53 (every 10)
+cold start      8432 ms  (first call, includes model load)
+
+  warm latency      mean     p95     min     max   (ms)
+  inference          482     587     420     982
+  decode             186     206     144     236
+  total              670     782     589    1220
+
+  achieved         1.49 frames/sec   (wall clock, this hardware)
+  required         3.00 frames/sec   (to track 30 fps video at stride 10)
+  real-time        0.50x          DOES NOT keep up
+
+  verdicts
+    IDLE            32
+    PASS             9
+    APPROACHING      6
+    DIVERT           6
+
+wrote out/audit-offline.mp4
+
+==============================================================
+END OFFLINE VERIFICATION  Thu Aug 13 15:46:54 EDT 2026
+==============================================================
