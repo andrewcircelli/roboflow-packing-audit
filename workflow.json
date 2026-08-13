@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "inputs": [
+    {
+      "type": "InferenceImage",
+      "name": "image"
+    }
+  ],
+  "steps": [
+    {
+      "type": "roboflow_core/yolo_world_model@v1",
+      "name": "model",
+      "images": "$inputs.image",
+      "class_names": [
+        "cardboard box"
+      ],
+      "confidence": 0.2,
+      "version": "l"
+    }
+  ],
+  "outputs": [
+    {
+      "type": "JsonField",
+      "name": "model_output",
+      "coordinates_system": "own",
+      "selector": "$steps.model.predictions"
+    }
+  ]
+}
