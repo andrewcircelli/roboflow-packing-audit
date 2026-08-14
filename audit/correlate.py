@@ -9,7 +9,7 @@ All four cells occur in the source clip; none are simulated:
     ------   ------------   ---------------   ------------------------------
     no       none           000-078, 287-391  idle station
     yes      TBA333...      150-240           expected parcel, readable label
-    yes      wrong ('FSA')  410               unlabelled parcel -> DIVERT
+    yes      wrong ('FSA')  410               unlabeled parcel -> DIVERT
     no       'FSA' present  420-460           detection miss, code still visible
 
 Rows 1 and 3 are why this module exists. The barcode reports nothing in both --

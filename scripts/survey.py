@@ -4,7 +4,7 @@ NOT the pipeline. One inference call per frame, no zone, no correlation, no
 decisions -- just the raw temporal picture, so the zone geometry and the
 frame-sampling rate get chosen from data instead of intuition.
 
-Prints, per frame: parcel confidence, the detection's centre and coverage, and
+Prints, per frame: parcel confidence, the detection's center and coverage, and
 whether the barcode decodes.
 
 Usage:

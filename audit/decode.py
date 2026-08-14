@@ -46,7 +46,7 @@ def read_barcode(
     visible, taking the first result is a coin flip.
 
     Returning None for a barcode that decoded but failed validation is
-    deliberate: an unrecognised code means the parcel has no identity this
+    deliberate: an unrecognized code means the parcel has no identity this
     station can act on, which is operationally the same as no code at all.
     """
     grayscale = frame if frame.ndim == 2 else cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)

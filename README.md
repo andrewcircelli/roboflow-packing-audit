@@ -18,7 +18,7 @@ A barcode scanner alone cannot tell you the difference between these two cases:
 | Parcel present | Barcode read | Meaning |
 |---|---|---|
 | no | none | idle station, nothing happening |
-| **yes** | **none** | **unlabelled parcel — must leave the line** |
+| **yes** | **none** | **unlabeled parcel — must leave the line** |
 
 The scanner reports *nothing* in both. One is a defect; the other is a quiet
 Tuesday. Only a camera observing the station directly separates them.
@@ -33,7 +33,7 @@ The other half of the argument surfaced by accident. This pipeline initially
 beside the shipping label, so a rule that accepted any decoded barcode waved
 through the one case staged deliberately to fail.
 
-That failure had a familiar shape. Before this project I spent a stretch on
+That failure had a familiar shape. Before this project I spent a year on
 application engineering for industrial barcode decoding, including validating
 decoded labels against captured images where several labels were in frame and
 only one carried the serial number that mattered. Deciding *which code in a frame
@@ -127,7 +127,7 @@ f150   PASS         parcel=0.770 raw=1 zone=True  code=TBA333622790661   452ms i
 | `PASS` | verdict for this frame |
 | `parcel=0.770` | detection confidence |
 | `raw=1` | detections **before** duplicate suppression — see [Assumptions](#assumptions-stated-because-they-will-break-somewhere-else) |
-| `zone=True` | the parcel's centre is at the read position |
+| `zone=True` | the parcel's center is at the read position |
 | `code=` | validated tracking identifier, or `-` |
 
 Verdicts:
@@ -139,7 +139,7 @@ Verdicts:
 | `PASS` | parcel at the read position with a valid tracking identifier |
 | `DIVERT` | parcel at the read position with **no valid identity** |
 
-The annotated video draws the read window, the detection box, the parcel's centre
+The annotated video draws the read window, the detection box, the parcel's center
 point, and a banner carrying both signals and the verdict. An operator should be
 able to see *why* a parcel diverted, not only that it did.
 
@@ -228,20 +228,20 @@ shutters and strobe illumination for this reason.
 
 Consequence for the deployment: the parcel comes to rest for ~2 seconds. That is
 not a workaround — a packing station holds the parcel while it is processed,
-unlike a sortation conveyor. The realistic behaviour and the working behaviour
+unlike a sortation conveyor. The realistic behavior and the working behavior
 coincide here; on a moving line they would not, and the answer there is a
 separate scanner rather than a better prompt.
 
 ### The read window
 
-Surveying the clip, with frame centre at x=1080:
+Surveying the clip, with frame center at x=1080:
 
 ```
-cx= 734   entering, off-centre     barcode: no
+cx= 734   entering, off-center     barcode: no
 cx=1073   arriving                 barcode: no
 cx=1080   settled                  barcode: TBA333622790661
 cx=1080   settled                  barcode: TBA333622790661
-cx=1343   leaving, off-centre      barcode: no
+cx=1343   leaving, off-center      barcode: no
 ```
 
 The barcode decodes **only** inside the settled window, so the zone predicts
@@ -269,7 +269,7 @@ before settling on zero-shot detection:
 | `parcel-vcjiz/1` | advertised 66.9% mAP; observed max 0.163 |
 | `box-plzjm/1` | no detections at any threshold down to 0.05 |
 | `parcel-box-jsl0q/1` | 0.905 on a pristine carton (class `BADBOX`), 0.474 on a photo of a blank wall |
-| `box-box-hh0mq/4` | passed a negative control, then localised on the empty table rather than the parcel |
+| `box-box-hh0mq/4` | passed a negative control, then localized on the empty table rather than the parcel |
 
 Three failures worth separating, because each needed a different check to catch:
 
@@ -430,7 +430,7 @@ was not ours, the other on hardware that is not ours.
 **The bottleneck likely moves.** Inference and decode are currently 678 of 679 ms.
 With CUDA and TensorRT, inference should drop sharply while `pyzbar` — pure CPU
 work on a full-resolution frame — will not. Decode would likely become the
-dominant cost, which changes where optimisation pays and makes the
+dominant cost, which changes where optimization pays and makes the
 crop-to-detection trade-off worth revisiting.
 
 **Memory is a real constraint, not a theoretical one.** The container was

@@ -43,7 +43,7 @@ class FrameResult:
     timestamp_s: float
     parcel_detected: bool
     parcel_confidence: float
-    parcel_centre: tuple[int, int] | None
+    parcel_center: tuple[int, int] | None
     in_zone: bool
     barcode: str | None
     verdict: str
@@ -116,14 +116,14 @@ def annotate(
             annotated, [zone_polygon.astype(np.int32)], True, (255, 200, 0), 3
         )
 
-    # The zone is a target for the parcel's CENTRE, not a container for the
+    # The zone is a target for the parcel's CENTER, not a container for the
     # parcel -- the parcel covers ~90% of the frame and could never fit inside
-    # it. Drawing the centre point makes the comparison legible: a viewer sees
+    # it. Drawing the center point makes the comparison legible: a viewer sees
     # the dot cross into the band rather than wondering why a huge box is being
     # judged by a thin stripe.
-    if result.parcel_centre is not None:
-        cv2.circle(annotated, result.parcel_centre, 18, (255, 200, 0), -1)
-        cv2.circle(annotated, result.parcel_centre, 18, (255, 255, 255), 3)
+    if result.parcel_center is not None:
+        cv2.circle(annotated, result.parcel_center, 18, (255, 200, 0), -1)
+        cv2.circle(annotated, result.parcel_center, 18, (255, 255, 255), 3)
 
     if len(detections) > 0:
         annotated = sv.BoxAnnotator(thickness=3).annotate(annotated, detections)
@@ -137,7 +137,7 @@ def annotate(
             annotated, detections, labels
         )
 
-    colour = {"PASS": (0, 200, 0), "DIVERT": (0, 0, 255)}.get(
+    color = {"PASS": (0, 200, 0), "DIVERT": (0, 0, 255)}.get(
         result.verdict, (160, 160, 160)
     )
     banner = [
@@ -155,7 +155,7 @@ def annotate(
             (20, 50 + i * 42),
             cv2.FONT_HERSHEY_SIMPLEX,
             1.1,
-            colour,
+            color,
             3,
             cv2.LINE_AA,
         )
@@ -236,11 +236,11 @@ def process(video_path: str, output_path: str) -> RunStats:
 
         parcel_detected = len(detections) > 0
         confidence = float(detections.confidence.max()) if parcel_detected else 0.0
-        centre = None
+        center = None
         if parcel_detected:
             best = int(np.argmax(detections.confidence))
             x1, y1, x2, y2 = detections.xyxy[best]
-            centre = (int((x1 + x2) / 2), int((y1 + y2) / 2))
+            center = (int((x1 + x2) / 2), int((y1 + y2) / 2))
 
         in_zone = zones.is_in_zone(detections, zone_polygon, (width, height))
 
@@ -260,7 +260,7 @@ def process(video_path: str, output_path: str) -> RunStats:
             timestamp_s=index / source_fps,
             parcel_detected=parcel_detected,
             parcel_confidence=confidence,
-            parcel_centre=centre,
+            parcel_center=center,
             in_zone=in_zone,
             barcode=barcode,
             verdict=verdict,
@@ -306,8 +306,8 @@ def report(stats: RunStats) -> None:
         it in makes every figure quietly wrong.
       - p95 is reported alongside the mean, because a mean alone hides the tail.
       - Inference and decode are reported separately, which answers where
-        optimisation would pay before anyone has to guess.
-      - Throughput is given as two labelled figures -- what the pipeline
+        optimization would pay before anyone has to guess.
+      - Throughput is given as two labeled figures -- what the pipeline
         achieves and what tracking the video would require. They differ by the
         sampling stride, and quoting one number as "FPS" overstates the system.
     """
